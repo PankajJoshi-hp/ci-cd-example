@@ -24,7 +24,7 @@ jobs:
     - name: Install Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.27.3' # Specify the Flutter version you want to use
+        flutter-version: '3.0.0' # Specify the Flutter version you want to use
 
     - name: Install dependencies
       run: flutter pub get
@@ -35,11 +35,8 @@ jobs:
     - name: Build APK
       run: flutter build apk --release
 
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v4
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
       with:
-       name: Releases
-       path: |
-        build/app/outputs/flutter-apk/app-release.apk
-        build/app/outputs/bundle/release/app-release.aab
-        build/ios_build.tar.gz
+        name: my_new_app
+        path: build/app/outputs/flutter-apk/app-release.apk
